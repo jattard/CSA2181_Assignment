@@ -85,7 +85,8 @@ function toggleDisplay(elementId) {
 <div class="section">
 <h2>Surefire Report<a name="Surefire_Report"></a></h2></div>
 <div class="section">
-<h2>Summary<a name="Summary"></a></h2><a name="Summary"></a><br />
+<h2>Summary<a name="Summary"></a></h2><a name="Summary"></a>
+<p>[<a href="#Summary">Summary</a>] [<a href="#Package_List">Package List</a>] [<a href="#Test_Cases">Test Cases</a>]</p><br />
 <table border="1" class="bodyTable">
 <tr class="a">
 <th>Tests</th>
@@ -95,13 +96,127 @@ function toggleDisplay(elementId) {
 <th>Success Rate</th>
 <th>Time</th></tr>
 <tr class="b">
+<td>7</td>
 <td>0</td>
+<td>1</td>
 <td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0%</td>
-<td>0</td></tr></table><br />
+<td>85.714%</td>
+<td>0.005</td></tr></table><br />
 <p>Note: failures are anticipated and checked for with assertions while errors are unanticipated.</p><br /></div>
+<div class="section">
+<h2>Package List<a name="Package_List"></a></h2><a name="Package_List"></a>
+<p>[<a href="#Summary">Summary</a>] [<a href="#Package_List">Package List</a>] [<a href="#Test_Cases">Test Cases</a>]</p><br />
+<table border="1" class="bodyTable">
+<tr class="a">
+<th>Package</th>
+<th>Tests</th>
+<th>Errors </th>
+<th>Failures</th>
+<th>Skipped</th>
+<th>Success Rate</th>
+<th>Time</th></tr>
+<tr class="b">
+<td><a href="#test.java">test.java</a></td>
+<td>7</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>85.714%</td>
+<td>0.005</td></tr></table><br />
+<p>Note: package statistics are not computed recursively, they only sum up all of its testsuites numbers.</p>
+<div class="section">
+<h3>test.java<a name="test.java"></a></h3><a name="test.java"></a>
+<table border="1" class="bodyTable">
+<tr class="a">
+<th></th>
+<th>Class</th>
+<th>Tests</th>
+<th>Errors </th>
+<th>Failures</th>
+<th>Skipped</th>
+<th>Success Rate</th>
+<th>Time</th></tr>
+<tr class="b">
+<td><a href="#test.javaTestDriven"><img src="images/icon_success_sml.gif" alt="" /></a></td>
+<td><a href="#test.javaTestDriven">TestDriven</a></td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+<td>0.003</td></tr>
+<tr class="a">
+<td><a href="#test.javaUnitTest"><img src="images/icon_warning_sml.gif" alt="" /></a></td>
+<td><a href="#test.javaUnitTest">UnitTest</a></td>
+<td>5</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>80%</td>
+<td>0.002</td></tr></table></div><br /></div>
+<div class="section">
+<h2>Test Cases<a name="Test_Cases"></a></h2><a name="Test_Cases"></a>
+<p>[<a href="#Summary">Summary</a>] [<a href="#Package_List">Package List</a>] [<a href="#Test_Cases">Test Cases</a>]</p>
+<div class="section">
+<h3>TestDriven<a name="TestDriven"></a></h3><a name="test.javaTestDriven"></a>
+<table border="1" class="bodyTable">
+<tr class="a">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>stringCalculatorTest</td>
+<td>0.003</td></tr>
+<tr class="b">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>getMessage</td>
+<td>0</td></tr></table></div>
+<div class="section">
+<h3>UnitTest<a name="UnitTest"></a></h3><a name="test.javaUnitTest"></a>
+<table border="1" class="bodyTable">
+<tr class="a">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>divisionTest</td>
+<td>0.001</td></tr>
+<tr class="b">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>addTest</td>
+<td>0</td></tr>
+<tr class="a">
+<td><a href="#test.java.UnitTest.test"><img src="images/icon_error_sml.gif" alt="" /></a></td>
+<td><a href="#test.java.UnitTest.test">test</a>
+<div class="detailToggle" style="display:inline"><a href="javascript:toggleDisplay(&apos;test_java_UnitTest_test&apos;);"><span style="display:inline;" id="test_java_UnitTest_testoff"> + </span><span style="display:none;" id="test_java_UnitTest_teston"> - </span>[ Detail ]</a></div></td>
+<td>0.001</td></tr>
+<tr class="b">
+<td></td>
+<td>Not yet implemented</td>
+<td></td></tr>
+<tr class="a">
+<td></td>
+<td>
+<div id="test_java_UnitTest_testerror" style="display:none;">
+<div>
+<pre>java.lang.AssertionError: Not yet implementedat org.junit.Assert.fail(Assert.java:88)at test.java.UnitTest.test(UnitTest.java:14)</pre></div></div></td>
+<td></td></tr>
+<tr class="b">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>multiplyTest</td>
+<td>0</td></tr>
+<tr class="a">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>subtractTest</td>
+<td>0</td></tr></table></div><br /></div>
+<div class="section">
+<h2>Failure Details<a name="Failure_Details"></a></h2><a name="Failure_Details"></a>
+<p>[<a href="#Summary">Summary</a>] [<a href="#Package_List">Package List</a>] [<a href="#Test_Cases">Test Cases</a>]</p><br />
+<table border="1" class="bodyTable">
+<tr class="a">
+<td><img src="images/icon_error_sml.gif" alt="" /></td>
+<td><a name="test.java.UnitTest.test"></a>test</td></tr>
+<tr class="b">
+<td></td>
+<td>java.lang.AssertionError: Not yet implemented</td></tr>        
+<tr class="a">
+<td></td>
+<td>
+<div id="testerror">test.java.UnitTest:14</div></td></tr></table><br /></div>
       </div>
     </div>
     <div class="clear">
