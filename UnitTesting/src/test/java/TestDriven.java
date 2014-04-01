@@ -1,11 +1,12 @@
-package unittesting;
+package test.java;
 
 import static org.junit.Assert.*;
 
+import main.java.HelloWorld;
+import main.java.StringCalculator;
+
 import org.junit.Test;
 
-import csaPractical1.HelloWorld;
-import csaPractical1.StringCalculator;
 
 public class TestDriven {
 

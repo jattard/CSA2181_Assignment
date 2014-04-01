@@ -1,12 +1,13 @@
-package unittesting;
+package test.java;
 
 import static org.junit.Assert.*;
 
+import main.java.Calculator;
+
 import org.junit.Test; 
 
-import csaPractical1.Calculator;
 
-public class UnitTests {
+public class UnitTest {
 
 	@Test
 	public void test() {
@@ -17,8 +18,7 @@ public class UnitTests {
 @Test
 public void addTest()
 {
-Calculator myCalculator = new Calculator();\
-fewds
+Calculator myCalculator = new Calculator();
 assertEquals(myCalculator.add(3,5),8);
 }
 

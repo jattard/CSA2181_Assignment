@@ -1,4 +1,4 @@
-package csaPractical1;
+package main.java;
 
 public class HelloWorld {
 
