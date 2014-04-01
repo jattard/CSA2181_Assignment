@@ -17,7 +17,8 @@ public class UnitTests {
 @Test
 public void addTest()
 {
-Calculator myCalculator = new Calculator();
+Calculator myCalculator = new Calculator();\
+fewds
 assertEquals(myCalculator.add(3,5),8);
 }
 
