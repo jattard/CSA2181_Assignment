@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.001" errors="4" skipped="0" tests="5" name="test.java.UnitTest">
+<testsuite failures="0" time="0" errors="4" skipped="0" tests="5" name="test.java.UnitTest">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.7.0_51\jre\bin"/>
@@ -95,7 +95,7 @@
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 </error>
   </testcase>
-  <testcase time="0.001" classname="test.java.UnitTest" name="addTest">
+  <testcase time="0" classname="test.java.UnitTest" name="addTest">
     <error message="Illegal local variable table length 5 in method main.java.Calculator.&lt;init&gt;()V" type="java.lang.ClassFormatError">java.lang.ClassFormatError: Illegal local variable table length 5 in method main.java.Calculator.&lt;init&gt;()V
 	at test.java.UnitTest.addTest(UnitTest.java:21)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)

@@ -35,7 +35,7 @@ java.lang.ClassFormatError: Illegal local variable table length 5 in method main
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 
-addTest(test.java.UnitTest)  Time elapsed: 0.001 sec  <<< ERROR!
+addTest(test.java.UnitTest)  Time elapsed: 0 sec  <<< ERROR!
 java.lang.ClassFormatError: Illegal local variable table length 5 in method main.java.Calculator.<init>()V
 	at test.java.UnitTest.addTest(UnitTest.java:21)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
