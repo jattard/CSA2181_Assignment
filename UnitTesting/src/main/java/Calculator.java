@@ -26,4 +26,13 @@ public class Calculator {
 	}
 	else return a/b;
 	}
+	
+	public int divide2 (int a, int b)
+	{
+	if(b==0)
+	{
+		return -999;
+	}
+	else return a/b;
+	}
 }
