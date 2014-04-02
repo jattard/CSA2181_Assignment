@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: test.java.TestDriven
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.055 sec <<< FAILURE!
-stringCalculatorTest(test.java.TestDriven)  Time elapsed: 0.009 sec  <<< ERROR!
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.058 sec <<< FAILURE!
+stringCalculatorTest(test.java.TestDriven)  Time elapsed: 0.01 sec  <<< ERROR!
 java.lang.ClassFormatError: Illegal local variable table length 5 in method main.java.StringCalculator.<init>()V
 	at test.java.TestDriven.stringCalculatorTest(TestDriven.java:29)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -35,7 +35,7 @@ java.lang.ClassFormatError: Illegal local variable table length 5 in method main
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 
-getMessage(test.java.TestDriven)  Time elapsed: 0.001 sec  <<< ERROR!
+getMessage(test.java.TestDriven)  Time elapsed: 0.002 sec  <<< ERROR!
 java.lang.ClassFormatError: Illegal local variable table length 5 in method main.java.HelloWorld.<init>()V
 	at test.java.TestDriven.getMessage(TestDriven.java:22)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
