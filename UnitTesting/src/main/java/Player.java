@@ -21,6 +21,16 @@ public class Player {
 		return pos;
 	}
 	
+	public void setTrail(Position pos)
+	{
+		// set player trail position to 1 if player opened a square
+		playerTrail[pos.getY()][pos.getX()] = 1;
+	}
+	
+	public int[][] getPlayerTrail() {
+		return playerTrail;
+	}
+	
 	public boolean move(char direction, int size)
 	{
 		switch (direction)
@@ -47,20 +57,22 @@ public class Player {
 				break;
 			default: return false;
 		}
+		
+		setTrail(pos);
 		return true;
 	}
 	
 	public void setPosition(Position pos)
 	{
-		// set player trail position to 1 if player opened a square
-		playerTrail[pos.getY()][pos.getX()] = 1;
-		this.pos = pos;
+		this.pos = new Position(pos.getX(), pos.getY());
 	}
 	
 	public void setStartingPosition(Position startingPosition)
 	{
 		this.startingPosition = startingPosition;
-		this.pos = new Position(startingPosition.getX(), startingPosition.getY());
+		this.pos = new Position(startingPosition.getY(), startingPosition.getX());
+		
+		setTrail(pos);
 	}
 	
 	public void setStartingPosition(int size)
@@ -81,8 +93,10 @@ public class Player {
 		
 		setTrail(size);
 		
-		this.startingPosition = new Position(randomRow, randomCol);
-		this.pos = new Position(randomRow, randomCol);
+		this.startingPosition = new Position(randomCol, randomRow);
+		this.pos = new Position(randomCol, randomRow);
+		
+		setTrail(pos);
 	}
 	
 	public void setTrail(int size)
