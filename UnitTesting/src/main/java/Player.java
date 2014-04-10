@@ -53,14 +53,14 @@ public class Player {
 	public void setPosition(Position pos)
 	{
 		// set player trail position to 1 if player opened a square
-		playerTrail[pos.getX()][pos.getY()] = 1;
+		playerTrail[pos.getY()][pos.getX()] = 1;
 		this.pos = pos;
 	}
 	
 	public void setStartingPosition(Position startingPosition)
 	{
 		this.startingPosition = startingPosition;
-		this.pos = startingPosition;
+		this.pos = new Position(startingPosition.getX(), startingPosition.getY());
 	}
 	
 	public void setStartingPosition(int size)
@@ -76,11 +76,11 @@ public class Player {
 			randomCol = (int) Math.floor(Math.random() * size);
 			
 			thisColor = Map.getTiles()[randomRow][randomCol];
-			System.out.println(thisColor);
 		}
-		while (thisColor != Color.GREEN); ///// GREEN!!!!
+		while (thisColor != Color.GREEN);
 		
 		setTrail(size);
+		
 		this.startingPosition = new Position(randomRow, randomCol);
 		this.pos = new Position(randomRow, randomCol);
 	}

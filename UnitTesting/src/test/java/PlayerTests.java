@@ -170,6 +170,4 @@ public class PlayerTests {
 		
 		assertEquals(Map.getTiles()[startPos.getX()][startPos.getY()], Color.GREEN);
 	}
-	
-	
 }

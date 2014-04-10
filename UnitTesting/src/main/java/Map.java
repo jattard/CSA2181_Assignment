@@ -14,9 +14,10 @@ public class Map {
 	
 	public Map(int x, int y) {
 		
-		if (setMapSize(x, y))
+		boolean validMapSize = setMapSize(x, y);
+		
+		if (validMapSize)
 		{
-			// generate();
 			generate();
 		}
 	}

@@ -14,7 +14,7 @@ public class MapTests {
 
 	Map map = null;
 	Game game = null;
-			
+	
 	@Before
 	public void before(){
 		game = new Game();
