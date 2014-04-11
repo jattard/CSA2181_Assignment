@@ -2,6 +2,7 @@ package test.java;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
@@ -107,5 +108,20 @@ public class GameTest {
 		assertTrue(game.winGame(Color.YELLOW));
 		assertFalse(game.winGame(Color.GREEN));
 		assertFalse(game.winGame(Color.BLUE));
+	}
+	
+	@Test
+	public void initStartingPosTest() {
+		
+		game.setNumPlayers(2);
+		map = new Map(5, 5);
+		Player[] players = Game.getPlayers();
+		
+		game.initGame(5, 2);
+		
+		for (int i=0; i < players.length; i++)
+		{
+			assertNotNull(players[i].getStartingPosition());
+		}
 	}
 }
