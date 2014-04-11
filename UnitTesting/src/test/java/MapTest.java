@@ -82,8 +82,10 @@ public class MapTest {
 	public void generateTestYellow(){
 		
 		game.setNumPlayers(5);
-		map.setMapSize(5, 5);
-		map.generate();
+		//map.setMapSize(5, 5);
+		//map.generate();
+		
+		map = new Map(5,5);
 		
 		int countYellow = 0;
 		
