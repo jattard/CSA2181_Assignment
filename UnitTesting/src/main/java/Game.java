@@ -206,7 +206,7 @@ public class Game {
 				writer.println("</tbody>");
 				writer.println("</table>");
 				writer.println("</body>");
-				writer.println("</html>");
+				writer.print("</html>");
 				
 				writer.flush();
 				writer.close();
