@@ -75,6 +75,12 @@ public class Player {
 		setTrail(pos);
 	}
 	
+	public void setFixedStartingPosition()
+	{
+		this.startingPosition = new Position(3, 3);
+		this.pos = new Position(3, 3);
+	}
+	
 	public void setStartingPosition(int size)
 	{
 		int randomRow;

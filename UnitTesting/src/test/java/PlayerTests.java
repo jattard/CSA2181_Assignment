@@ -30,8 +30,9 @@ public class PlayerTests {
 	public void moveTestLeftUppercase() {
 		
 		Position startPos = new Position(3, 4);
+		player.setTrail(5);
 		player.setStartingPosition(startPos);
-		Position checkPos = new Position(2, 4);
+		Position checkPos = new Position(3, 3);
 		player.move('L', 5);
 		
 		assertEquals(player.getPos().toString(), checkPos.toString());
@@ -41,8 +42,9 @@ public class PlayerTests {
 	public void moveTestLeftLowercase() {
 		
 		Position startPos = new Position(3, 4);
+		player.setTrail(5);
 		player.setStartingPosition(startPos);		
-		Position checkPosl = new Position(2, 4);
+		Position checkPosl = new Position(3, 3);
 		player.move('l', 5);
 		
 		assertEquals(player.getPos().toString(), checkPosl.toString());
@@ -52,7 +54,8 @@ public class PlayerTests {
 	public void moveTestLeftOutOfBounds() {
 		//Position startPos = new Position(3, 4);
 		
-		Position startPos2 = new Position(0, 4);
+		Position startPos2 = new Position(0, 0);
+		player.setTrail(5);
 		player.setStartingPosition(startPos2);
 		player.move('L', 5);
 		
@@ -64,6 +67,7 @@ public class PlayerTests {
 	public void moveTestUpUppercase() {
 		
 		Position startPos = new Position(3, 3);
+		player.setTrail(5);
 		player.setStartingPosition(startPos);
 		Position checkPos = new Position(3, 2);
 		player.move('U', 5);
@@ -75,6 +79,7 @@ public class PlayerTests {
 	public void moveTestUpLowercase() {
 		
 		Position startPos = new Position(3, 3);
+		player.setTrail(5);
 		player.setStartingPosition(startPos);		
 		Position checkPosl = new Position(3, 2);
 		player.move('u', 5);
@@ -86,7 +91,8 @@ public class PlayerTests {
 	public void moveTestUpOutOfBounds() {
 		//Position startPos = new Position(3, 4);
 		
-		Position startPos2 = new Position(0, 4);
+		Position startPos2 = new Position(0, 0);
+		player.setTrail(5);
 		player.setStartingPosition(startPos2);
 		player.move('U', 5);
 		
@@ -98,6 +104,7 @@ public class PlayerTests {
 	public void moveTestDownUppercase() {
 		
 		Position startPos = new Position(3, 3);
+		player.setTrail(5);
 		player.setStartingPosition(startPos);
 		Position checkPos = new Position(3, 4);
 		player.move('D', 5);
@@ -109,6 +116,7 @@ public class PlayerTests {
 	public void moveTestDownLowercase() {
 		
 		Position startPos = new Position(3, 3);
+		player.setTrail(5);
 		player.setStartingPosition(startPos);		
 		Position checkPosl = new Position(3, 4);
 		player.move('d', 5);
@@ -120,7 +128,8 @@ public class PlayerTests {
 	public void moveTestDownOutOfBounds() {
 		//Position startPos = new Position(3, 4);
 		
-		Position startPos2 = new Position(0, 0);
+		Position startPos2 = new Position(4, 4);
+		player.setTrail(5);
 		player.setStartingPosition(startPos2);
 		player.move('D', 5);
 		
@@ -131,9 +140,10 @@ public class PlayerTests {
 	@Test
 	public void moveTestRightUppercase() {
 		
-		Position startPos = new Position(3, 4);
+		Position startPos = new Position(3, 3);
+		player.setTrail(5);
 		player.setStartingPosition(startPos);
-		Position checkPos = new Position(4, 4);
+		Position checkPos = new Position(4, 3);
 		player.move('R', 5);
 		
 		assertEquals(player.getPos().toString(), checkPos.toString());
@@ -142,9 +152,10 @@ public class PlayerTests {
 	@Test
 	public void moveTestRightLowercase() {
 		
-		Position startPos = new Position(3, 4);
+		Position startPos = new Position(3, 3);
+		player.setTrail(5);
 		player.setStartingPosition(startPos);		
-		Position checkPosl = new Position(4, 4);
+		Position checkPosl = new Position(4, 3);
 		player.move('r', 5);
 		
 		assertEquals(player.getPos().toString(), checkPosl.toString());
@@ -155,6 +166,7 @@ public class PlayerTests {
 		//Position startPos = new Position(3, 4);
 		
 		Position startPos2 = new Position(4, 4);
+		player.setTrail(5);
 		player.setStartingPosition(startPos2);
 		player.move('R', 5);
 		
@@ -168,6 +180,6 @@ public class PlayerTests {
 		player.setStartingPosition(5);
 		Position startPos = player.getStartingPosition();
 		
-		assertEquals(Map.getTiles()[startPos.getX()][startPos.getY()], Color.GREEN);
+		assertEquals(Map.getTiles()[startPos.getY()][startPos.getX()], Color.GREEN);
 	}
 }
