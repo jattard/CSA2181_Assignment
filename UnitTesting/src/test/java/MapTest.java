@@ -1,6 +1,8 @@
 package test.java;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.awt.Color;
 
@@ -69,28 +71,28 @@ public class MapTest {
 		assertFalse(set);
 	}
 	
+	@Test
 	public void generateTestSize() {
 		
-		game.setNumPlayers(5);
+		game.setNumPlayers(2);
 		map.setMapSize(5, 5);
-		map.generate();
+		game.initGame(5, 5);
 		
 		assertEquals(Map.getTiles().length, 5);
 		assertEquals(Map.getTiles()[1].length, 5);
 	}
 	
+	@Test
 	public void generateTestYellow(){
 		
-		game.setNumPlayers(5);
-		//map.setMapSize(5, 5);
-		//map.generate();
-		
-		map = new Map(5,5);
+		game.setNumPlayers(2);
+		map.setMapSize(5, 5);
+		game.initGame(5, 5);
 		
 		int countYellow = 0;
 		
-		for(int i = 0; i < 5; i++){
-			for(int j =0 ; i < 5; j++){
+		for(int i=0; i < 5; i++){
+			for(int j=0 ; j < 5; j++){
 				if(Map.getTiles()[i][j] == Color.YELLOW)
 					countYellow++;
 			}
