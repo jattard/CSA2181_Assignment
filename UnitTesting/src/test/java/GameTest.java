@@ -17,7 +17,7 @@ import org.apache.commons.io.FileUtils;
 import org.junit.Before;
 import org.junit.Test;
 
-public class GameTests {
+public class GameTest {
 
 	Game game = null;
 	Map map = null;

@@ -11,7 +11,7 @@ import main.java.Position;
 import org.junit.Before;
 import org.junit.Test;
 
-public class PlayerTests {
+public class PlayerTest {
 	
 	Map map = null;
 	Player player = null;

@@ -6,7 +6,7 @@ import main.java.Position;
 import org.junit.Before;
 import org.junit.Test;
 
-public class PositionTests {
+public class PositionTest {
 	
 	Position p;
 	

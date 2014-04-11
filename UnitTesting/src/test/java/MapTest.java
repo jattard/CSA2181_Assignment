@@ -10,7 +10,7 @@ import main.java.Map;
 import org.junit.Before;
 import org.junit.Test;
 
-public class MapTests {
+public class MapTest {
 
 	Map map = null;
 	Game game = null;
