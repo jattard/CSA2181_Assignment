@@ -33,7 +33,7 @@ public class Team implements Subject {
         if (!changed)
             return;
         
-        observersLocal = new ArrayList<>(this.observers);
+        observersLocal = new ArrayList<Observer>(this.observers);
         this.changed = false;
         
         for (Observer obj : observersLocal) {
