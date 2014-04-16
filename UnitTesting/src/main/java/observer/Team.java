@@ -10,7 +10,7 @@ public class Team implements Subject {
     private boolean changed;
     
     public Team() {
-        this.observers = new ArrayList<>();
+        this.observers = new ArrayList<Observer>();
     }
     
     public List<Observer> getPlayers() {
