@@ -4,9 +4,11 @@ import static org.junit.Assert.assertEquals;
 
 import java.awt.Color;
 
-import main.java.Map;
+import main.java.Game;
 import main.java.Player;
 import main.java.Position;
+import main.java.mapfactory.Map;
+import main.java.mapfactory.SafeMap;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -15,11 +17,15 @@ public class PlayerTest {
 	
 	Map map = null;
 	Player player = null;
+	Game game = null;
 	
 	@Before
 	public void before() {
-
-		map = new Map();
+		
+		game = new Game();
+		game.setNumPlayers(2);
+		
+		map = SafeMap.getInstance(5, 5);
 		map.setSize(5);
 		map.generate();
 		player = new Player();

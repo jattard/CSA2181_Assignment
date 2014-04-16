@@ -1,16 +1,15 @@
-package main.java;
+package main.java.mapfactory;
 
 import java.awt.Color;
-import java.util.Random;
 
-public class Map {
+import main.java.Game;
+
+public abstract class Map {
 	
-	private int size;
-	private static Color[][] tiles;
+	protected int size;
+	protected static Color[][] tiles;
 	
-	public Map() {
-		
-	}
+	protected static Map map = null;
 	
 	public Map(int x, int y) {
 		
@@ -18,6 +17,7 @@ public class Map {
 		
 		if (validMapSize)
 		{
+			setSize(x);
 			generate();
 		}
 	}
@@ -38,7 +38,7 @@ public class Map {
 		Map.tiles = tiles;
 	}
 	
-	public boolean setMapSize(int x, int y)
+	public static boolean setMapSize(int x, int y)
 	{
 		// max map size - 50 x 50
 		if (x != y || x > 50)
@@ -62,7 +62,7 @@ public class Map {
 				return false;
 			}
 		}
-		size = x;
+		//size = x;
 		return true;	
 	}
 	
@@ -88,31 +88,5 @@ public class Map {
 		tiles[0][4] = Color.YELLOW;	
 	}
 	
-	public void generate()
-	{
-		tiles = new Color[size][size];
-		Random rand = new Random();
-		
-		for (int i=0; i < tiles.length; i++)
-		{
-			for (int j=0; j < tiles[i].length; j++)
-			{
-				int random = rand.nextInt(2);
-				
-				if (random == 0)
-				{
-					tiles[i][j] = Color.GREEN; // grass
-				}
-				else if (random == 1)
-				{
-					tiles[i][j] = Color.BLUE; // water
-				}
-			}
-		}
-		
-		int randomRow = (int) Math.floor(Math.random() * size);
-		int randomCol = (int) Math.floor(Math.random() * size);
-		
-		tiles[randomRow][randomCol] = Color.YELLOW; // treasure
-	}	
+	public abstract void generate();
 }

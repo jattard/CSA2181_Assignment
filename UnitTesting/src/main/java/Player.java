@@ -2,16 +2,16 @@ package main.java;
 
 import java.awt.Color;
 
-public class Player {
+import main.java.mapfactory.Map;
+import main.java.observer.Observer;
+import main.java.observer.Subject;
+
+public class Player implements Observer {
 
 	private Position pos;
 	private Position startingPosition;
 	private int[][] playerTrail;
-	
-	public Player()
-	{
-		
-	}
+	private Subject topic;
 	
 	public Position getStartingPosition() {
 		return startingPosition;
@@ -97,8 +97,9 @@ public class Player {
 		}
 		while (thisColor != Color.GREEN);
 		
-		setTrail(size);
-		
+		if (playerTrail == null)
+			setTrail(size);
+
 		this.startingPosition = new Position(randomCol, randomRow);
 		this.pos = new Position(randomCol, randomRow);
 		
@@ -117,5 +118,17 @@ public class Player {
 				playerTrail[i][j] = 0;
 			}
 		}
+	}
+
+	@Override
+	public void update() 
+	{
+		playerTrail = (int[][]) topic.getUpdate(this);
+	}
+
+	@Override
+	public void setSubject(Subject topic) 
+	{
+		this.topic = topic;
 	}
 }

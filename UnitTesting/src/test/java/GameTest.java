@@ -11,8 +11,9 @@ import java.io.File;
 import java.io.IOException;
 
 import main.java.Game;
-import main.java.Map;
 import main.java.Player;
+import main.java.mapfactory.Map;
+import main.java.mapfactory.SafeMap;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.Before;
@@ -25,8 +26,10 @@ public class GameTest {
 	
 	@Before
 	public void before() {
+		
 		game = new Game();
-		map = new Map();
+		game.setNumPlayers(2);
+		map = SafeMap.getInstance(5, 5);	
 		
 		game.setPlayers(null);
 	}
@@ -34,6 +37,7 @@ public class GameTest {
 	@Test
 	public void toHexStringTest() {
 		
+			
 		String returnGreenhashCode = game.toHexString(Color.GREEN).toUpperCase();
 		String actualGreenHashCode = "#00FF00";
 		
@@ -52,7 +56,7 @@ public class GameTest {
 	
 	@Test
 	public void validNumberOfPlayersTest() {
-		
+				
 		boolean valid1Player = game.setNumPlayers(1);
 		assertEquals(valid1Player, false);
 		assertNull(Game.getPlayers());
@@ -74,7 +78,7 @@ public class GameTest {
 	public void generateHTMLTest() throws IOException {
 		
 		game.setNumPlayers(2);
-		map.setMapSize(5, 5);
+		map.setSize(5);
 		Player[] players = Game.getPlayers();
 		
 		for (int i=0; i < players.length; i++)
@@ -96,7 +100,7 @@ public class GameTest {
 	public void winGameTest() {
 		
 		game.setNumPlayers(2);
-		map.setMapSize(5, 5);
+		map.setSize(5);
 		Player[] players = Game.getPlayers();
 		
 		for (int i=0; i < players.length; i++)
@@ -112,12 +116,12 @@ public class GameTest {
 	
 	@Test
 	public void initStartingPosTest() {
-		
+
 		game.setNumPlayers(2);
-		map = new Map(5, 5);
+		map = SafeMap.getInstance(5, 5);
 		Player[] players = Game.getPlayers();
 		
-		game.initGame(5, 2);
+		game.initGame(5, 1);
 		
 		for (int i=0; i < players.length; i++)
 		{

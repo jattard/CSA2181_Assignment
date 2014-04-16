@@ -6,19 +6,22 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
-public class Game {
+import main.java.mapfactory.Map;
+import main.java.mapfactory.MapCreator;
+import main.java.observer.Observer;
+import main.java.observer.Team;
 
+public class Game {
+	
+	private Team[] teams;
 	private static Player[] players;
 	private int turn;
-	private Map map;
 	private int size;
 	private ArrayList<Integer> winners = new ArrayList<Integer>();
-
-	public Game() {
-		map = new Map();
-	}
 	
 	public static Player[] getPlayers() {
 		return players;
@@ -33,6 +36,12 @@ public class Game {
 		for (int i=0; i < players.length; i++)
 		{
 			players[i].setStartingPosition(size);
+			
+			if (teams != null && teams.length != 0)
+			{
+				int teamNo = getTeam(players[i]);
+				teams[teamNo].setTeamTrail(players[i].getPlayerTrail());
+			}
 		}
 	}
 	
@@ -55,13 +64,15 @@ public class Game {
 		}
 	}
 	
-	public void initGame(int size, int noOfPlayers)
+	public void initGame(int size, int mapType)
 	{
 		// set map size, generate map colors and set starting positions
 		this.size = size;
-		map = new Map(size, size); 
-		initStartingPos();
 		
+		MapCreator creator = new MapCreator();
+		creator.createMap(mapType, size, size);
+		
+		initStartingPos();
 		turn = 0;
 	}
 	
@@ -76,6 +87,21 @@ public class Game {
 		}
 		
 		return winGame;
+	}
+	
+	public int getTeam(Player player) 
+	{
+		for (int i=0; i < teams.length; i++) {
+			
+			List<Observer> players = teams[i].getPlayers();
+			
+			for (int j=0; j < players.size(); j++) {
+				
+				if (players.get(j).equals(player))
+					return i;
+			}
+		}
+		return -1;
 	}
 	
 	public void startGame()
@@ -93,12 +119,21 @@ public class Game {
 				int player = turn;
 				char direction;
 				
+				int teamNo = getTeam(players[turn]);
+				
 				do {
+					
+					if (teams != null && teams.length != 0)
+					{
+						System.out.print("Team " + teamNo + ", ");  
+					}
 					
 					System.out.println("Player " + (player + 1) + " where do you want to move? (U/D/L/R): ");
 					direction = kb.next().charAt(0); 
 				
 				} while (!players[turn].move(direction, size)); // until player enters valid move char
+								
+				teams[teamNo].setTeamTrail(players[turn].getPlayerTrail());
 				
 				currentPos = players[turn].getPos();
 				color = Map.getTiles()[currentPos.getY()][currentPos.getX()];
@@ -222,6 +257,38 @@ public class Game {
 		}
 	}
 	
+	public void initTeams(int noOfTeams) {
+		
+		teams = new Team[noOfTeams];
+		
+		for (int i=0; i < teams.length; i++) {
+			teams[i] = new Team();
+		}
+	}
+	
+	public void assignTeams() {
+		
+		int teamno = -1;
+		for (int i = 0; i < Game.getPlayers().length; i++) {
+			
+			if (i <= teams.length - 1) 
+			{
+				teams[i].register(Game.getPlayers()[i]);
+				teamno = i;
+			}
+			else 
+			{
+				Random rand = new Random();
+				int random = rand.nextInt(teams.length); // [0, teams.length)
+				
+				teams[random].register(Game.getPlayers()[i]);
+				teamno = random;
+			}
+			
+			Game.getPlayers()[i].setSubject(teams[teamno]);
+		}
+	}
+	
 	public static void main(String[] args) {
 		
 		Scanner kb = new Scanner(System.in);
@@ -229,6 +296,10 @@ public class Game {
 		try
 		{
 			Game game = new Game();
+			
+			System.out.println("Enter Number of Teams (0 if no teams): ");
+			int noOfTeams = kb.nextInt();
+			game.initTeams(noOfTeams);
 			
 			int noOfPlayers;
 			
@@ -239,15 +310,21 @@ public class Game {
 				
 			} while (!game.setNumPlayers(noOfPlayers));
 			
+			if (noOfTeams != 0)
+				game.assignTeams();
+			
 			int size;
 			do 
 			{
 				System.out.println("Enter map size: ");
 				size = kb.nextInt();
 				
-			} while (!game.map.setMapSize(size, size));
+			} while (!Map.setMapSize(size, size));
 			
-			game.initGame(size, noOfPlayers);
+			System.out.println("Choose map type: (1) Safe (2) Hazardous: ");
+			int mapType = kb.nextInt();
+			
+			game.initGame(size, mapType);
 			game.generateHTMLFiles();
 			game.startGame();
 			
