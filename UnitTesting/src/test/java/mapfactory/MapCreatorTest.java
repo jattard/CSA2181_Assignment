@@ -1,6 +1,9 @@
 package test.java.mapfactory;
 
 import static org.junit.Assert.assertEquals;
+
+import java.lang.reflect.Field;
+
 import main.java.Game;
 import main.java.mapfactory.Map;
 import main.java.mapfactory.MapCreator;
@@ -11,12 +14,16 @@ import org.junit.Test;
 public class MapCreatorTest {
 
 	Game game = null;
+	Map map = null;
 	
 	@Before
-	public void before() { 
+	public void before() throws NoSuchFieldException, IllegalAccessException { 
 		game = new Game();
 		game.setNumPlayers(2);
 		
+		Field field = Map.class.getDeclaredField("map");
+		field.setAccessible(true);
+		field.set(map, null);
 	}
 	
 	@SuppressWarnings("rawtypes")
@@ -24,7 +31,7 @@ public class MapCreatorTest {
 	public void createMapTest() {
 		
 		MapCreator creator = new MapCreator();
-		Map map = creator.createMap(1, 5, 5);
+		map = creator.createMap(1, 5, 5);
 		
 		Class mapClass = map.getClass();
 		String className = mapClass.getSimpleName();
