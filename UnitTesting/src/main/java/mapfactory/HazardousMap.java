@@ -61,13 +61,13 @@ public class HazardousMap extends Map{
 		int randomRow = (int) Math.floor(Math.random() * size);
 		int randomCol = (int) Math.floor(Math.random() * size);
 		
-		while (tiles[randomRow][randomCol] != Color.BLUE)
+		while (tiles[randomRow][randomCol] == Color.BLUE)
 		{
-			tiles[randomRow][randomCol] = Color.YELLOW; // treasure	
-			
 			randomRow = (int) Math.floor(Math.random() * size);
 			randomCol = (int) Math.floor(Math.random() * size);
 		}
+		
+		tiles[randomRow][randomCol] = Color.YELLOW; // treasure	
 	}
 
 }

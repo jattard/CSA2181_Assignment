@@ -1,8 +1,10 @@
 package test.java.mapfactory;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.awt.Color;
+import java.lang.reflect.Field;
 
 import main.java.Game;
 import main.java.mapfactory.Map;
@@ -17,11 +19,18 @@ public class SafeMapTest {
 	Game game = null;
 	
 	@Before
-	public void before() {
+	public void before() throws NoSuchFieldException, IllegalAccessException {
 		
 		game = new Game();
 		game.setNumPlayers(2);
+		
+		Field field = Map.class.getDeclaredField("map");
+		field.setAccessible(true);
+		field.set(map, null);
+		
 		map = SafeMap.getInstance(5, 5);
+		Map.setMapSize(5, 5);
+		map.generate();
 	}
 	
 	@Test
@@ -29,7 +38,8 @@ public class SafeMapTest {
 		
 		Color[][] tiles = Map.getTiles();
 		int area = (int) (5 * 5 * 0.1);
-		int countBlue = 0;
+		int countBlue = 0, countYellow = 0;
+		
 		
 		for (int i=0; i < tiles.length; i++) {
 			for (int j=0; j < tiles[i].length; j++) {
@@ -38,6 +48,10 @@ public class SafeMapTest {
 				{
 					countBlue++;
 				}
+				else if (tiles[i][j] == Color.YELLOW)
+				{
+					countYellow++;
+				}
 			}
 		}
 		
@@ -45,6 +59,7 @@ public class SafeMapTest {
 		if(countBlue <= area)
 			safe = true;
 		
-		assertTrue(true);
+		assertTrue(safe);
+		assertEquals(countYellow, 1);
 	}
 }

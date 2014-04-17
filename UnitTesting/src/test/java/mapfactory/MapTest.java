@@ -96,7 +96,7 @@ public class MapTest {
 					countYellow++;
 			}
 		}
-		
+			
 		assertEquals(countYellow, 1);
 	}
 }

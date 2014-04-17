@@ -18,6 +18,7 @@ public class TeamTest {
 	
 	@Test
 	public void registerTest() {
+		
 		Player p = new Player();
 		Player p2 = new Player();
 		t.register(p);
