@@ -1,6 +1,7 @@
 package test.java;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 import java.awt.Color;
 
@@ -178,6 +179,19 @@ public class PlayerTest {
 		
 		// check if starting position stayed the same
 		assertEquals(player.getPos().toString(), startPos2.toString());
+	}
+	
+	@Test
+	public void moveInvalidCharacterTest() {
+		//Position startPos = new Position(3, 4);
+		
+		Position startPos2 = new Position(4, 4);
+		player.setTrail(5);
+		player.setStartingPosition(startPos2);
+		boolean move = player.move('x', 5);
+		
+		// check if starting position stayed the same
+		assertFalse(move);
 	}
 	
 	@Test

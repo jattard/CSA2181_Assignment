@@ -27,6 +27,10 @@ public class Game {
 		return players;
 	}
 
+	public Team[] getTeams() {
+		return teams;
+	}
+	
 	public void setPlayers(Player[] players) {
 		Game.players = players;
 	}

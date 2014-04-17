@@ -1,6 +1,7 @@
 package test.java.mapfactory;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import java.lang.reflect.Field;
 
@@ -45,6 +46,11 @@ public class MapCreatorTest {
 		
 		// check that 2nd instance of Map, wasn't created
 		assertEquals(className, "SafeMap");
+		
+		map = creator.createMap(3, 5, 5);
+		
+		// check that 2nd instance of Map, wasn't created
+		assertNull(map);
 	
 	}	
 }

@@ -14,6 +14,7 @@ import main.java.Game;
 import main.java.Player;
 import main.java.mapfactory.Map;
 import main.java.mapfactory.SafeMap;
+import main.java.observer.Team;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.Before;
@@ -127,5 +128,50 @@ public class GameTest {
 		{
 			assertNotNull(players[i].getStartingPosition());
 		}
+	}
+	
+	@Test
+	public void initStartingPosTeamsTest() {
+		
+		game.initTeams(2);
+		game.setNumPlayers(4);
+		game.assignTeams();
+		
+		map = SafeMap.getInstance(5, 5);
+		Player[] players = Game.getPlayers();
+		
+		game.initGame(5, 1);
+		
+		for (int i=0; i < players.length; i++)
+		{
+			assertNotNull(players[i].getStartingPosition());
+		}
+	}
+	
+	@Test
+	public void assignTeamsTest() {
+		
+		game.initTeams(2);
+		game.setNumPlayers(4);
+		
+		game.assignTeams();
+		
+		Player[] players = Game.getPlayers();
+		
+		// player 1 is in team 0
+		assertEquals(0, game.getTeam(players[0]));
+		
+		// player 2 is in team 1
+		assertEquals(1, game.getTeam(players[1]));
+		
+		int countPlayers = 0;
+		Team[] teams = game.getTeams();
+		
+		for(int i = 0; i < teams.length; i++){
+			countPlayers += teams[i].getPlayers().size();
+		}
+		
+		// there are 4 players in both teams together
+		assertEquals(4, countPlayers);
 	}
 }

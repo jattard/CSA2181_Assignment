@@ -7,7 +7,10 @@ public class MapCreator {
 	public Map createMap(int type, int x, int y) {
 	    //Determine which creator to use
 	    MapCreator creator = findCreatorForType(type);
-	    return creator.createMap(x, y);
+	    
+	    if (creator != null)
+	    	return creator.createMap(x, y);
+	    else return null;
 	}
 	
 	public Map createMap(int x, int y) {
