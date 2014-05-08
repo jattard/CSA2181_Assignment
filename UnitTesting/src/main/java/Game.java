@@ -86,7 +86,11 @@ public class Game {
 
 		if (currentTileColor == Color.YELLOW)
 		{
-			winners.add(turn);
+			if (teams != null && teams.length != 0)
+				winners.add(getTeam(players[turn]));
+			else	
+				winners.add(turn);
+			
 			winGame = true;
 		}
 		
@@ -115,7 +119,9 @@ public class Game {
 		Position currentPos = null; 
 		Color color = null;
 		boolean gameEnded = false;
-
+		boolean winGame = false;
+		int teamNo = -1;
+		
 		try
 		{
 			do
@@ -123,21 +129,24 @@ public class Game {
 				int player = turn;
 				char direction;
 				
-				int teamNo = getTeam(players[turn]);
+				teamNo = getTeam(players[turn]);
 				
 				do {
 					
 					if (teams != null && teams.length != 0)
 					{
-						System.out.print("Team " + teamNo + ", ");  
+						System.out.print("Team " + (teamNo + 1) + ", ");  
 					}
 					
 					System.out.println("Player " + (player + 1) + " where do you want to move? (U/D/L/R): ");
 					direction = kb.next().charAt(0); 
 				
 				} while (!players[turn].move(direction, size)); // until player enters valid move char
-								
-				teams[teamNo].setTeamTrail(players[turn].getPlayerTrail());
+						
+				if (teams != null && teams.length != 0)
+				{
+					teams[teamNo].setTeamTrail(players[turn].getPlayerTrail());
+				}
 				
 				currentPos = players[turn].getPos();
 				color = Map.getTiles()[currentPos.getY()][currentPos.getX()];
@@ -149,7 +158,9 @@ public class Game {
 				}
 				
 				generateHTMLFiles();
-				boolean winGame = winGame(color);
+				
+				if (!winGame)
+					winGame = winGame(color);
 				
 				if (turn < (players.length - 1))
 				{
@@ -167,7 +178,14 @@ public class Game {
 			
 			for (int i=0; i < winners.size(); i++)
 			{
-				System.out.println("Congratulations! Player " + (winners.get(i) + 1) + " YOU WIN!!! :) ");
+				if (teams != null && teams.length != 0)
+				{
+					System.out.println("Congratulations! Team " + (teamNo + 1) + " YOU WIN!!! :)");
+				}
+				else
+				{
+					System.out.println("Congratulations! Player " + (winners.get(i) + 1) + " YOU WIN!!! :)");
+				}
 			}
 		} 
 		finally
